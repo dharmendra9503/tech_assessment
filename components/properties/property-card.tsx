@@ -18,7 +18,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
       href={`/properties/${property.id}`}
       className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-base"
     >
-      <article className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15 hover:bg-white/[0.05]">
+      <article className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm shadow-slate-950/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-lg hover:shadow-slate-950/15 dark:shadow-black/25 dark:hover:shadow-black/40">
         <div className="relative aspect-[4/3] overflow-hidden">
           <Image
             src={property.image}
@@ -47,42 +47,42 @@ export function PropertyCard({ property }: PropertyCardProps) {
         <div className="p-5">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-[22px] font-bold leading-none text-white">
+              <p className="text-[22px] font-bold leading-none text-card-foreground">
                 ${property.price.toLocaleString()}
               </p>
-              <p className="mt-1.5 text-[12px] text-gray-500">From $100 / share</p>
+              <p className="mt-1.5 text-[12px] text-muted-foreground">From $100 / share</p>
             </div>
             <span className="inline-flex shrink-0 items-center rounded-full bg-success/12 px-2.5 py-1 text-[11px] font-semibold text-emerald-300 ring-1 ring-emerald-400/25">
               {property.roi}% ROI
             </span>
           </div>
 
-          <div className="mt-4 flex items-stretch divide-x divide-white/10 text-[13px]">
+          <div className="mt-4 flex items-stretch divide-x divide-border text-[13px]">
             <div className="pr-4">
-              <p className="font-semibold text-white">{layoutLabel}</p>
-              <p className="text-[10.5px] uppercase tracking-wider text-gray-500">Layout</p>
+              <p className="font-semibold text-card-foreground">{layoutLabel}</p>
+              <p className="text-[10.5px] uppercase tracking-wider text-muted-foreground">Layout</p>
             </div>
             <div className="px-4">
-              <p className="font-semibold text-white">{property.area.toLocaleString()}</p>
-              <p className="text-[10.5px] uppercase tracking-wider text-gray-500">sqft</p>
+              <p className="font-semibold text-card-foreground">{property.area.toLocaleString()}</p>
+              <p className="text-[10.5px] uppercase tracking-wider text-muted-foreground">sqft</p>
             </div>
             <div className="pl-4">
-              <p className="font-semibold text-white">{property.yearBuilt}</p>
-              <p className="text-[10.5px] uppercase tracking-wider text-gray-500">Built</p>
+              <p className="font-semibold text-card-foreground">{property.yearBuilt}</p>
+              <p className="text-[10.5px] uppercase tracking-wider text-muted-foreground">Built</p>
             </div>
           </div>
 
-          <div className="mt-4 flex items-center gap-1.5 text-[12.5px] text-gray-400">
+          <div className="mt-4 flex items-center gap-1.5 text-[12.5px] text-muted-foreground">
             <MapPin className="h-3 w-3" aria-hidden="true" />
             <span className="truncate">{property.location}</span>
           </div>
 
           <div className="mt-4">
             <div className="mb-1.5 flex items-center justify-between text-[10.5px] uppercase tracking-wider">
-              <span className="font-medium text-gray-400">{fundedPercent}% funded</span>
-              <span className="text-gray-500">{property.tokensAvailable}% available</span>
+              <span className="font-medium text-muted-foreground">{fundedPercent}% funded</span>
+              <span className="text-muted-foreground">{property.tokensAvailable}% available</span>
             </div>
-            <div className="h-1 overflow-hidden rounded-full bg-white/[0.06]">
+            <div className="h-1 overflow-hidden rounded-full bg-muted">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-brand to-brand-soft"
                 style={{ width: `${fundedPercent}%` }}

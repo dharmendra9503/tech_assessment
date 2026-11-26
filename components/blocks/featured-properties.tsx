@@ -10,14 +10,14 @@ export function FeaturedProperties() {
   const featured = properties.slice(0, FEATURED_LIMIT)
 
   return (
-    <section className="scroll-mt-24 bg-surface-base py-28 sm:py-36" id="featured-properties">
+    <section className="scroll-mt-24 bg-surface-base py-28 transition-colors duration-300 sm:py-36" id="featured-properties">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Featured Properties
             </h2>
-            <p className="mt-2 text-base text-gray-400">
+            <p className="mt-2 text-base text-muted-foreground">
               Hand-picked deals available for fractional ownership today.
             </p>
           </div>
@@ -34,7 +34,7 @@ export function FeaturedProperties() {
             <Button
               size="lg"
               variant="outline"
-              className="h-11 gap-2 rounded-full border-white/15 bg-white/5 px-6 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/10 hover:text-white"
+              className="h-11 gap-2 rounded-full border-border bg-card px-6 text-sm font-semibold text-card-foreground hover:bg-accent hover:text-accent-foreground"
             >
               See More Properties
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

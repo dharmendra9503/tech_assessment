@@ -6,7 +6,7 @@ import { VisionMission } from '@/components/blocks/vision-mission'
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-surface-base text-gray-100">
+    <div className="min-h-screen bg-surface-base text-foreground">
       <HeroBanner />
       <FeaturedProperties />
       <HowItWorks />

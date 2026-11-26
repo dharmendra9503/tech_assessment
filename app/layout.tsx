@@ -6,6 +6,14 @@ import { ToastProvider } from '@/providers/toast-provider'
 import { WalletProvider } from '@/providers/wallet-provider'
 import { Footer } from '@/components/blocks/footer'
 import { Navbar } from '@/components/navigation/navbar'
+import { ThemeProvider } from '@/providers/theme-provider'
+
+const themeBootstrapScript = `try {
+  if (window.location.pathname === '/' && window.localStorage.getItem('blockestate-theme') === 'light') {
+    document.documentElement.classList.remove('dark')
+    document.documentElement.dataset.theme = 'light'
+  }
+} catch {}`
 
 const geistSans = localFont({
   src: '../public/fonts/GeistVF.woff',
@@ -33,19 +41,24 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface-base min-h-screen pt-[68px]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-surface-base pt-[68px] text-foreground transition-colors duration-300`}
       >
-        <ToastProvider>
-          <AuthProvider>
-            <WalletProvider>
-              <Navbar />
-              {children}
-              <Footer />
-            </WalletProvider>
-          </AuthProvider>
-        </ToastProvider>
+        <ThemeProvider>
+          <ToastProvider>
+            <AuthProvider>
+              <WalletProvider>
+                <Navbar />
+                {children}
+                <Footer />
+              </WalletProvider>
+            </AuthProvider>
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

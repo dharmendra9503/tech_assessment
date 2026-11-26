@@ -45,7 +45,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px] bg-gray-800/90 backdrop-blur-lg text-white border-gray-700">
+      <DialogContent className="sm:max-w-[425px] border-border bg-popover text-popover-foreground backdrop-blur-lg">
         <DialogTitle className="text-2xl font-bold text-center">Sign In</DialogTitle>
         <DialogDescription className="sr-only">
           Sign in with a mock account to preview the investor experience.
@@ -53,14 +53,14 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
         <div className="grid gap-6">
           <div className="space-y-2 text-center">
-            <p className="text-gray-400">Choose your preferred sign in method</p>
+            <p className="text-muted-foreground">Choose your preferred sign in method</p>
           </div>
 
           <div className="space-y-4">
             <Button
               type="button"
               variant="outline"
-              className="w-full bg-white/5 border-gray-700 hover:bg-white/10 text-white space-x-2"
+              className="w-full border-border bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground space-x-2"
               onClick={() => mockSignIn('demo@github.com')}
             >
               <Github className="h-5 w-5" />
@@ -69,7 +69,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
             <Button
               type="button"
               variant="outline"
-              className="w-full bg-white/5 border-gray-700 hover:bg-white/10 text-white space-x-2"
+              className="w-full border-border bg-card text-card-foreground hover:bg-accent hover:text-accent-foreground space-x-2"
               onClick={() => mockSignIn('demo@email.com')}
             >
               <Mail className="h-5 w-5" />
@@ -79,16 +79,16 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-gray-700" />
+              <span className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-gray-800/90 px-2 text-gray-400">Or</span>
+              <span className="bg-popover px-2 text-muted-foreground">Or</span>
             </div>
           </div>
 
           <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-300">
+              <Label htmlFor="email" className="text-muted-foreground">
                 Email
               </Label>
               <Input
@@ -97,7 +97,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
                 type="email"
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? 'email-error' : undefined}
-                className="bg-white/5 border-gray-700 text-white placeholder:text-gray-500 focus-visible:ring-blue-500"
+                className="border-input bg-background text-foreground placeholder:text-muted-foreground"
                 {...register('email')}
               />
               {errors.email ? (
@@ -107,7 +107,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
               ) : null}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-gray-300">
+              <Label htmlFor="password" className="text-muted-foreground">
                 Password
               </Label>
               <Input
@@ -115,7 +115,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
                 type="password"
                 aria-invalid={Boolean(errors.password)}
                 aria-describedby={errors.password ? 'password-error' : undefined}
-                className="bg-white/5 border-gray-700 text-white placeholder:text-gray-500 focus-visible:ring-blue-500"
+                className="border-input bg-background text-foreground placeholder:text-muted-foreground"
                 {...register('password')}
               />
               {errors.password ? (
@@ -124,7 +124,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
                 </p>
               ) : null}
             </div>
-            <Button type="submit" className="w-full bg-brand hover:bg-brand-hover text-white">
+            <Button type="submit" className="w-full bg-brand text-white hover:bg-brand-hover">
               Sign In
             </Button>
           </form>
@@ -135,7 +135,7 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
             </a>
           </div>
 
-          <div className="text-center text-sm text-gray-400">
+          <div className="text-center text-sm text-muted-foreground">
             Don&apos;t have an account?{' '}
             <a href="#" className="text-brand hover:text-brand-hover">
               Sign up

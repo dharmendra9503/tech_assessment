@@ -7,6 +7,7 @@ import { SignInModal } from '@/components/auth/sign-in-modal'
 import { AuthActions } from '@/components/navigation/auth-actions'
 import { MobileNavigation } from '@/components/navigation/mobile-navigation'
 import { NavigationLinks } from '@/components/navigation/navigation-links'
+import { ThemeToggle } from '@/components/navigation/theme-toggle'
 
 export function Navbar() {
   const [isSignInOpen, setIsSignInOpen] = useState(false)
@@ -22,13 +23,13 @@ export function Navbar() {
   }
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-surface-base/55 backdrop-blur-xl">
+    <nav className="theme-navbar fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-surface-base/80 backdrop-blur-xl transition-colors duration-300">
       <div className="mx-auto max-w-[92rem] px-6 sm:px-10 lg:px-14 xl:px-20">
         <div className="flex h-[68px] items-center justify-between md:grid md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
           <Link
             href="/"
             aria-label="BlockEstate home"
-            className="text-[22px] font-semibold tracking-tight text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
+            className="text-[22px] font-semibold tracking-tight text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
           >
             Block<span className="font-display italic font-medium text-brand">Estate</span>
           </Link>
@@ -37,17 +38,21 @@ export function Navbar() {
             <NavigationLinks pathname={pathname} />
           </div>
 
-          <div className="hidden justify-self-end md:block">
+          <div className="hidden items-center justify-self-end gap-3 md:flex">
+            {pathname === '/' ? <ThemeToggle /> : null}
             <AuthActions onSignIn={openSignIn} />
           </div>
 
-          <MobileNavigation
-            isOpen={isMobileMenuOpen}
-            onClose={closeMobileMenu}
-            onOpenChange={setIsMobileMenuOpen}
-            onSignIn={openSignIn}
-            pathname={pathname}
-          />
+          <div className="flex items-center gap-2 md:hidden">
+            {pathname === '/' ? <ThemeToggle /> : null}
+            <MobileNavigation
+              isOpen={isMobileMenuOpen}
+              onClose={closeMobileMenu}
+              onOpenChange={setIsMobileMenuOpen}
+              onSignIn={openSignIn}
+              pathname={pathname}
+            />
+          </div>
         </div>
       </div>
 
